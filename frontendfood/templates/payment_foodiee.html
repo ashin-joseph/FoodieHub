@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment</title>
+</head>
+<body>
+
+<form action="#" method="POST">
+    {% csrf_token %}
+
+    <div style="text-align:center; margin-top:-80px; background-color: pink; padding: 20px;">
+        <h1>Proceed to Payment</h1>
+         <input type="hidden" name="" >
+        <h3>Remitter: {{customer.checkout_username}}</h3>
+
+
+
+        <img src="{% static 'assets/img/payment-icon.png' %}" width="100px;" height="100px;">
+        <br>
+            <button class="btn">Make Payment</button>
+    </div>
+
+</form>
+
+    <!-- Include Razorpay script for payment -->
+
+
+
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0px;
+            margin: 0px;
+            font-family: cursive;
+        }
+        html,
+        body {
+            height: 100%;
+        }
+        body {
+            background-image: url({% static 'assets/img/payment_bg.jpg' %});
+            opacity: 0.8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .card {
+            background-color: white;
+            padding: 25px;
+            border: 1px solid #bbbbbb;
+            border-radius: 5px;
+            box-shadow: 1px 1px 10px 0px rgb(0 0 0 / 25%);
+        }
+        .title {
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        .muted {
+            color: #8e7f7f;
+            display: block;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .btn_container {
+            padding: 20px;
+            text-align: center;
+        }
+        .btn {
+            border-radius: 4px;
+            cursor: pointer;
+            padding: 4px 8px;
+            background-color: brown;
+            color: white;
+            font-size: 1.2em;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .btn:hover{
+            background-color: blue;
+        }
+    </style>
+<script src="https://checkout.razorpay.com/v1/checkout.js"
+ data-key="rzp_test_7apnMZ22irzosy"
+ data-amount="{{pay_str}}"
+ data-order_currency="INR"
+ data-order_id="{{payment.order_id}}"
+ data-buttontext=""
+ data-name="BigMart"
+ data-description="your description"
+ data-image=""
+ data-prefill.name="Ashin"
+ data-prefill.email="ashinjoseph01@gmail.com"
+ data-theme.color=""
+>
+</script>
+
+
+</body>
+</html>
