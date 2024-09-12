@@ -4,6 +4,20 @@ class contactDb(models.Model):
     con_name=models.CharField(max_length=50,null=True,blank=True)
     con_number=models.IntegerField(null=True,blank=True)
     con_message=models.CharField(max_length=200,null=True,blank=True)
+
+class booktableDb(models.Model):
+    bt_name=models.CharField(max_length=50,null=True,blank=True)
+    bt_number=models.CharField(max_length=50,null=True,blank=True)
+    bt_email=models.EmailField(max_length=200,null=True,blank=True)
+    bt_persons=models.CharField(max_length=200,null=True,blank=True)
+    bt_date=models.DateField(null=True,blank=True)
+    bt_time = models.CharField(max_length=50, null=True, blank=True)
+
+class reviewDb(models.Model):
+    rev_name=models.CharField(max_length=50,null=True,blank=True)
+    rev_email=models.EmailField(max_length=200,null=True,blank=True)
+    rev_message=models.CharField(max_length=200,null=True,blank=True)
+    rev_rate=models.IntegerField(null=True,blank=True)
 class signUpDb(models.Model):
     su_email=models.EmailField(max_length=100,null=True,blank=True)
     su_username=models.CharField(max_length=50,null=True,blank=True)

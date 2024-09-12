@@ -7,24 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Payment</title>
 </head>
-<body>
+<body style="background-color: #f1f2f3 !important;">
 
 <form action="#" method="POST">
     {% csrf_token %}
 
-    <div style="text-align:center; margin-top:-80px; background-color: pink; padding: 20px;">
-        <h1>Proceed to Payment</h1>
+    <div style="text-align:center; margin-top:-80px; background-color: #222831; padding: 20px; height:500px; width:450px;"><br><br><br>
+        <h1 style="color:#ffffff !important;">Proceed to Payment</h1><br>
          <input type="hidden" name="" >
-        <h3>Remitter: {{customer.checkout_username}}</h3>
+        <h3 style="color:#ffffff !important;">Remitter: {{customer.checkout_username}}</h3><br>
 
-
-
-        <img src="{% static 'assets/img/payment-icon.png' %}" width="100px;" height="100px;">
-        <br>
-            <button class="btn">Make Payment</button>
+        <img src="{% static 'fnfd/images/payment-icon.png' %}" width="100px;" height="100px;">
+        <br><br>
+            <button class="btn">Make Payment</button><br><br><br>
+         <button ><a href="{% url 'Homepage' %}">Back</a></button>
     </div>
 
 </form>
+
+
+
 
     <!-- Include Razorpay script for payment -->
 
@@ -33,9 +35,10 @@
     <style>
         * {
             box-sizing: border-box;
+            border-radius: 8px;
             padding: 0px;
             margin: 0px;
-            font-family: cursive;
+            font-family:sans-serif;
         }
         html,
         body {
@@ -70,17 +73,31 @@
             text-align: center;
         }
         .btn {
-            border-radius: 4px;
+             border-radius: 45px;
             cursor: pointer;
-            padding: 4px 8px;
-            background-color: brown;
-            color: white;
+            padding: 10px 70px;
+            background-color: #ffbe33;
+            color: #ffffff;
             font-size: 1.2em;
             font-weight: 600;
             letter-spacing: 1px;
         }
         .btn:hover{
-            background-color: blue;
+            background-color:#c98d0c;
+        }
+        a{
+            border-radius: 45px;
+            cursor: pointer;
+            padding: 10px 125px;
+            background-color: #ffbe33;
+            color: #ffffff;
+            font-size: 1.2em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-decoration:none;
+        }
+        a:hover{
+            background-color:#c98d0c;
         }
     </style>
 <script src="https://checkout.razorpay.com/v1/checkout.js"

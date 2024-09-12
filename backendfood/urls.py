@@ -25,5 +25,12 @@ urlpatterns = [
 
 
     path('ContactDisplay/',views.contact_fnfd_display,name="ContactDisplay"),
+    path('Delete_contact/<int:conDid>/',views.delete_contact,name="Delete_contact"),
+
+    path('BookTableDisplay/', views.book_table_display, name="BookTableDisplay"),
+    path('Delete_booktable/<int:Did>/', views.delete_booktable, name="Delete_booktable"),
+
+    path('ReviewDisplay/', views.review_display, name="ReviewDisplay"),
+    path('Delete_review/<int:Did>/', views.delete_booktable, name="Delete_review"),
 
 ]

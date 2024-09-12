@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from backendfood.models import fdCategoryDb,fbProductDb
-from frontendfood.models import contactDb
+from frontendfood.models import contactDb, booktableDb, reviewDb
 from django.core.files.storage import FileSystemStorage
 from django.utils.datastructures import MultiValueDictKeyError
 from django.contrib.auth.models import User
@@ -113,3 +113,21 @@ def delete_p(request,pDid):
 def contact_fnfd_display(request):
     condata=contactDb.objects.all()
     return render(request,"fnfd_contac.html",{'condata':condata})
+def delete_contact(request,conDid):
+    contactDb.objects.filter(id=conDid).delete()
+    messages.error(request,"Deleted Contact")
+    return redirect(contact_fnfd_display)
+def book_table_display(request):
+    btdata= booktableDb.objects.all()
+    return render(request, "display_bt.html",{'btdata':btdata})
+def delete_booktable(request,Did):
+    booktableDb.objects.filter(id=Did).delete()
+    messages.error(request,"Deleted BookTable")
+    return redirect(book_table_display)
+def review_display(request):
+    rdata=reviewDb.objects.all()
+    return render(request, "display_review.html",{'rdata':rdata})
+def delete_review(request,Did):
+    reviewDb.objects.filter(id=Did).delete()
+    messages.error(request,"Deleted Review")
+    return redirect(review_display)

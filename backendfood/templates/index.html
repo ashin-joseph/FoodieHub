@@ -87,12 +87,12 @@
     <!-- Sidebar menu-->
     <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
     <aside class="app-sidebar">
-      <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="{% static 'bkfd/img/Screenshot_2020-03-26-15-23-28.png' %}" alt="User Image" height="60px" width="60px">
+      <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="{% static 'bkfd/img/' %}" alt="User Image" height="60px" width="60px">
         <div>
           {% if request.session.username %}
           <p class="app-sidebar__user-name">{{request.session.username}}</p>
           {% endif %}
-          <p class="app-sidebar__user-designation">Frontend Developer</p>
+<!--          <p class="app-sidebar__user-designation">Frontend Developer</p>-->
         </div>
       </div>
       <ul class="app-menu">
@@ -114,6 +114,19 @@
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Contact</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="{% url 'ContactDisplay' %}"><i class="icon fa fa-circle-o"></i> Display</a></li>
+<!--            <li><a class="treeview-item" href="widgets.html"><i class="icon fa fa-circle-o"></i> Widgets</a></li>-->
+          </ul>
+        </li>
+
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Table Booking</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item" href="{% url 'BookTableDisplay' %}"><i class="icon fa fa-circle-o"></i> Display</a></li>
+<!--            <li><a class="treeview-item" href="widgets.html"><i class="icon fa fa-circle-o"></i> Widgets</a></li>-->
+          </ul>
+        </li>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Review</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item" href="{% url 'ReviewDisplay' %}"><i class="icon fa fa-circle-o"></i> Display</a></li>
 <!--            <li><a class="treeview-item" href="widgets.html"><i class="icon fa fa-circle-o"></i> Widgets</a></li>-->
           </ul>
         </li>

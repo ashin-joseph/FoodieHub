@@ -43,7 +43,7 @@
     <header class="header_section">
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand" href="{% url 'Homepage' %}">
             <span>Foodiee</span>
           </a>
 
@@ -56,12 +56,12 @@
               <li class="nav-item"><a class="nav-link" href="{% url 'Homepage' %}">Home <span class="sr-only">(current)</span></a></li>
               <li class="nav-item"><a class="nav-link" href="{% url 'Menupage' %}">Menu</a></li>
               <li class="nav-item"><a class="nav-link" href="{% url 'Aboutpage' %}">About</a></li>
-              <li class="nav-item"><a class="nav-link" href="{% url 'Book_tablepage' %}">Book Table</a></li>
-              <li class="nav-item active"><a class="nav-link" href="#">Contact</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'Book_tablepage' %}">Book</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'Contactpage' %}">Contact</a></li>
             </ul>
             <div class="user_option">
               {% if request.session.su_username %}
-              <a href="{% url 'LogOutpage' %}" class="user_link">{{request.session.su_username}}</a>
+              <a href="{% url 'LogOutpage' %}" class="user_link">{{request.session.su_username}}/Logout</a>
               {% else %}
               <a href="{% url 'Registrationpage' %}" class="user_link">
                 {% endif %}
@@ -106,11 +106,10 @@
                 </svg>
               </a>
               <form class="form-inline">
-                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                  <i class="fa fa-search" aria-hidden="true"></i>
-                </button>
+                <a class="nav-link" href="{% url 'Reviewpage' %}"><i class="fa fa-star" style="color: gold;"></i></a>
+
               </form>
-              <a href="" class="order_online">Order Online</a>
+              <a href="{% url 'Menupage' %}" class="order_online">Order</a>
             </div>
           </div>
         </nav>
@@ -167,7 +166,7 @@
             </tr>
         </tbody>
     </table>
-    <a href="{% url 'checkOutpage' %}"><button type="submit" class="checkout-btn ">Checkout</button></a>
+    <a href="{% url 'checkOutpage' %}"><button type="submit" class="checkout-btn" style="background-color:#ffbe33 !important;">Checkout</button></a>
   </div>
   <!-- end book section -->
 
@@ -191,9 +190,9 @@
         </div>
         <div class="col-md-4 footer-col">
           <div class="footer_detail">
-            <a href="" class="footer-logo">Foodiee</a>
-            <p>Forget greasy spoons! This bakery's got your fast food fix, with gourmet burgers,
-              artisanal pastries, and quality beverages, all bursting with flavor.</p>
+            <a href="{% url 'Homepage' %}" class="footer-logo">Foodiee</a>
+            <p>Forget greasy spoons! This restaurant serves delicious breakfasts, hearty lunches,
+              savory snacks, and gourmet dinners, all bursting with flavor.</p>
             <div class="footer_social">
               <a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
               <a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
@@ -211,8 +210,8 @@
       </div>
       <div class="footer-info">
         <p>
-          &copy; <span id="displayYear"></span> All Rights Reserved By
-          <a href="https://html.design/">Foodiee</a><br><br>
+          &copy; <span id="displayYear "></span> All Rights Reserved By
+          <a href="{% url 'Homepage' %}">Foodiee</a><br><br>
           &copy; <span id="displayYear"></span> Distributed By
           <a href="https://themewagon.com/" target="_blank">foodiee</a>
         </p>

@@ -1,17 +1,21 @@
+from django.contrib import messages
 from django.shortcuts import render,redirect
 from backendfood.models import fdCategoryDb,fbProductDb
-from frontendfood.models import contactDb,signUpDb,cartDb, checkoutDb
+from frontendfood.models import contactDb,signUpDb,cartDb, checkoutDb, booktableDb, reviewDb
 import razorpay
 
 def home_pg_fd(request):
     cdata=fdCategoryDb.objects.all()
-    return render(request,"home_foodiee.html",{'cdata_f1':cdata})
+    reviewdata = reviewDb.objects.all()
+    return render(request,"home_foodiee.html",{'cdata_f1':cdata, 'reviewdata':reviewdata})
 def about_pg_fd(request):
     return render(request,"about_foodiee.html")
 def booktable_pg_fd(request):
     return render(request,"booktable_foodiee.html")
 def contact_pg_fd(request):
     return render(request,"contact_foodiee.html")
+def review_pg_fd(request):
+    return render(request,"review_foodiee.html")
 def contact_save_fd(request):
     if request.method=="POST":
         a=request.POST.get('c1')
@@ -19,7 +23,31 @@ def contact_save_fd(request):
         c=request.POST.get('c3')
         obj=contactDb(con_name=a,con_number=b,con_message=c)
         obj.save()
-        return redirect(contact_pg_fd)
+        messages.success(request,"Your message have been sent successfully")
+        return redirect(home_pg_fd)
+
+def booktable_save_fd(request):
+    if request.method=="POST":
+        a=request.POST.get('bt1')
+        b=request.POST.get('bt2')
+        c=request.POST.get('bt3')
+        d=request.POST.get('bt4')
+        e=request.POST.get('bt5')
+        f = request.POST.get('bt6')
+        obj=booktableDb(bt_name=a, bt_number=b, bt_email=c,bt_persons=d, bt_date=e, bt_time=f)
+        obj.save()
+        messages.success(request,"Your reservation is confirmed")
+        return redirect(home_pg_fd)
+def review_save_fd(request):
+    if request.method=="POST":
+        a=request.POST.get('r1')
+        b=request.POST.get('r2')
+        c=request.POST.get('r3')
+        d=request.POST.get('r4')
+        obj=reviewDb(rev_name=a,rev_email=b,rev_message=c,rev_rate=d)
+        obj.save()
+        messages.success(request,"Thank you for your review")
+        return redirect(home_pg_fd)
 def menu_pg_fd(request):
     pdata=fbProductDb.objects.all()
     cdata=fdCategoryDb.objects.all()
@@ -37,7 +65,8 @@ def save_registration_signup(request):
         d=request.POST.get('e4')
         obj=signUpDb(su_email=a,su_username=b,su_password=c,su_confirmpassword=d)
         obj.save()
-        return redirect(home_pg_fd)
+        messages.success(request, "Your Registration is successfully completed, kindly Login to continue.")
+        return redirect(registration_pg_fd)
 def Login_su_fd(request):
     if request.method=="POST":
         su_un=request.POST.get('d1')
@@ -45,14 +74,18 @@ def Login_su_fd(request):
         if signUpDb.objects.filter(su_username=su_un,su_password=su_pwd).exists():
             request.session['su_username']=su_un
             request.session['su_password']=su_pwd
+            messages.success(request, f"{su_un} Welcome to Foodiee.")
             return redirect(home_pg_fd)
         else:
+            messages.error(request, "Invalid user name or password")
             return redirect(registration_pg_fd)
     else:
+        messages.error(request, "Invalid user name or password")
         return redirect(registration_pg_fd)
 def Logout_su_fd(request):
     del request.session['su_username']
     del request.session['su_password']
+    messages.success(request, f"Thank you. ")
     return redirect(registration_pg_fd)
 def detail_pg_fd(request,Proname):
     pdata=fbProductDb.objects.filter(p_name=Proname)
@@ -64,8 +97,13 @@ def save_cart_foodiee(request):
         c=request.POST.get("quantity")
         d=request.POST.get("price")
         e=request.POST.get("totalprice")
-        obj=cartDb(cart_username=a,cart_productname=b,cart_quantity=c,cart_price=d,cart_totalprice=e)
-        obj.save()
+        if a:
+            obj = cartDb(cart_username=a, cart_productname=b, cart_quantity=c, cart_price=d, cart_totalprice=e)
+            obj.save()
+            messages.success(request, "Item added to cart")
+        else:
+            messages.warning(request, "Kindly Login to proceed further")
+            return redirect(registration_pg_fd)
         return redirect(menu_pg_fd)
 
 def cart_pg(request):
@@ -128,6 +166,7 @@ def save_checkout(request):
         obj=checkoutDb(checkout_username=co_username,checkout_email=co_email,checkout_place=co_place,checkout_address=co_address,checkout_Phone=co_phone,checkout_message=co_message,checkout_overall_total=co_totalprice)
         obj.save()
         return redirect(payment_pg)
+
 def payment_pg(request):
     customer=checkoutDb.objects.order_by('-id').first()
     pay =customer.checkout_overall_total
@@ -139,5 +178,6 @@ def payment_pg(request):
         order_currency ='INR'
         client = razorpay.Client(auth=('rzp_test_7apnMZ22irzosy','mlTDHZRjKcZpIfDGoQVKW6WQ'))
         payment=client.order.create({'amount':amount, 'order_currency':order_currency,'payment_capture':'1'})
+
 
     return render(request,"payment_foodiee.html",{'customer':customer,'pay_str':pay_str})

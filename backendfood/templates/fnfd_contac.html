@@ -27,7 +27,7 @@
                     <td>{{i.con_number}}</td>
                     <td>{{i.con_message}}</td>
                     <td>
-                        <a href=""><button class="btn btn-danger" type="button">Delete</button></a>
+                        <a href="{% url 'Delete_contact' conDid=i.id %}"><button class="btn btn-danger" type="button">Delete</button></a>
                     </td>
                   </tr>
                 {% endfor %}

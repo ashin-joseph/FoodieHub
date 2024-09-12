@@ -43,7 +43,7 @@
     <header class="header_section">
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand" href="{% url 'Homepage' %}">
             <span>
               Foodiee
             </span>
@@ -58,12 +58,12 @@
               <li class="nav-item"><a class="nav-link" href="{% url 'Homepage' %}">Home <span class="sr-only">(current)</span></a></li>
               <li class="nav-item "><a class="nav-link" href="{% url 'Menupage' %}">Menu</a></li>
               <li class="nav-item active"><a class="nav-link" href="#">About</a></li>
-              <li class="nav-item"><a class="nav-link" href="{% url 'Book_tablepage' %}">Book Table</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'Book_tablepage' %}">Book</a></li>
               <li class="nav-item"><a class="nav-link" href="{% url 'Contactpage' %}">Contact</a></li>
             </ul>
             <div class="user_option">
               {% if request.session.su_username %}
-              <a href="{% url 'LogOutpage' %}" class="user_link">{{request.session.su_username}}</a>
+              <a href="{% url 'LogOutpage' %}" class="user_link">{{request.session.su_username}}/Logout</a>
               {% else %}
               <a href="{% url 'Registrationpage' %}" class="user_link">
                 {% endif %}
@@ -124,13 +124,10 @@
                 </svg>
               </a>
               <form class="form-inline">
-                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                  <i class="fa fa-search" aria-hidden="true"></i>
-                </button>
+             <a class="nav-link" href="{% url 'Reviewpage' %}"><i class="fa fa-star" style="color: gold;"></i></a>
+
               </form>
-              <a href="" class="order_online">
-                Order Online
-              </a>
+             <a href="{% url 'Menupage' %}" class="order_online">Order</a>
             </div>
           </div>
         </nav>
@@ -155,16 +152,28 @@
             <div class="heading_container">
               <h2>We Are Foodiee</h2>
             </div>
-            <p>Level up your lunch break! Ovenfresh reimagines fast food with healthier,
-              tastier twists on classics like burgers, fries, and donuts. Plus, they have delicious
-              pastries and quality beverages to quench your thirst. It's the perfect spot for a quick
-              bite that won't leave you feeling greasy.<br>
-              Ovenfresh: Fast food, but better. Burgers, fries, donuts, drinks & pastries. Quality
-              ingredients, tastier eats.<br><br>
-              Ditch the drive-thru! Ovenfresh bakes up all your fast food favorites - burgers, fries,
-              and even donuts - with healthier, tastier ingredients. Quality beverages and delicious
-              pastries round out the menu, making this the perfect spot for a quick, satisfying bite.</p>
-            <a href="">Read More</a>
+            <p>Foodiee Restaurant offers a delightful journey through the rich and diverse
+              flavors of Indian cuisine, serving breakfast, lunch, dinner, and snacks in a warm,
+              inviting atmosphere.<br>
+              Start your day with our breakfast menu, featuring classic South Indian delicacies
+              like crispy dosas, fluffy idlis, and savory upma, alongside North Indian favorites
+              like parathas, poha, and chole bhature. Pair your meal with a steaming cup of chai
+              or freshly brewed filter coffee to kickstart your morning.<br>
+              For lunch, indulge in a variety of hearty options, from aromatic biryanis and
+              flavorful pulaos to a wide selection of vegetarian and non-vegetarian curries like
+              butter chicken, paneer butter masala, and dal tadka. Enjoy these with a choice of
+              Indian breads like naan, roti, or paratha, along with refreshing raitas and salads.<br>
+              As the day winds down, our dinner offerings extend the culinary adventure, with
+              signature tandoori items like kebabs and grilled fish, as well as rich, slow-cooked
+              curries and biryanis that showcase the depth of Indian spices. Round off your meal
+              with traditional desserts like gulab jamun, rasmalai, or kulfi.<br>
+              Throughout the day, we also offer a wide range of snacks, including savory samosas,
+              pakoras, chaats, and vada pav, perfect for a quick bite or evening tea. <br>
+              At Foodiee, every meal is crafted with authentic flavors and ingredients,
+              ensuring a truly memorable dining experience. Whether you're stopping by for a
+              quick snack or enjoying a full-course meal, we bring the best of Indian cuisine to
+              your table.</p>
+<!--            <a href="">Read More</a>-->
           </div>
         </div>
       </div>
@@ -195,11 +204,11 @@
         </div>
         <div class="col-md-4 footer-col">
           <div class="footer_detail">
-            <a href="" class="footer-logo">
+            <a href="{% url 'Homepage' %}" class="footer-logo">
               Foodiee
             </a>
-            <p>Forget greasy spoons! This bakery's got your fast food fix, with gourmet burgers,
-              artisanal pastries, and quality beverages, all bursting with flavor.</p>
+            <p>Forget greasy spoons! This restaurant serves delicious breakfasts, hearty lunches,
+              savory snacks, and gourmet dinners, all bursting with flavor.</p>
             <div class="footer_social">
               <a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
               <a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
@@ -217,8 +226,8 @@
       </div>
       <div class="footer-info">
         <p>
-          &copy; <span id="displayYear"></span> All Rights Reserved By
-          <a href="https://html.design/">Foodiee</a><br><br>
+          &copy; <span id="displayYear "></span> All Rights Reserved By
+          <a href="{% url 'Homepage' %}">Foodiee</a><br><br>
           &copy; <span id="displayYear"></span> Distributed By
           <a href="https://themewagon.com/" target="_blank">foodiee</a>
         </p>
