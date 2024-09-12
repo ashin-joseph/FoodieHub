@@ -145,7 +145,7 @@ def checkout_pg(request):
     shippingPrice = 0
     overAllTotal = 0
     for i in cartdataUsername:
-        subTotal = subTotal + i.cart_price
+        subTotal = subTotal + i.cart_totalprice
         if subTotal < 100:
             shippingPrice = 100
         else:
