@@ -152,8 +152,9 @@
                 <a href="{% url 'paymentpage' %}"><button type="submit" class="submit-btn">Submit</button></a>
             </form>
         </div>
-        <div class="order-details">
-            <h3>Your Order Details</h3>
+
+        <div class="order-details ">
+            <h2>Your Order Details</h2>
             <table>
                 <thead>
                     <tr>
@@ -165,7 +166,7 @@
                     {% for i in cartdataUsername %}
                     <tr>
                         <td>{{i.cart_productname}}</td>
-                        <td>Rs.{{i.cart_price}}</td>
+                        <td>Rs.{{i.cart_totalprice}}</td>
                     </tr>
                     {% endfor %}
                     <tr>
@@ -316,8 +317,8 @@
     }
 
         .container1 {
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            box-shadow: 0 0 0px rgba(0, 0, 0, 0.1);
             border-radius: 5px;
             max-width: 900px;
             width: 100%;
@@ -325,7 +326,7 @@
             font-family: Arial, sans-serif;
             margin-left: 500px;
             display: flex;
-            background-color: #f8f8f8;
+
 
         }
         .form-container {
@@ -334,7 +335,7 @@
         }
         .order-details {
             flex: 1;
-            background-color: #f2f2f2;
+            background-color: #ffffff;
             padding: 30px;
         }
         .form-group {
@@ -358,17 +359,19 @@
             resize: none;
         }
         .submit-btn {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            background-color: orange;
+            display: inline-block;
+            padding: 10px 55px;
+            background-color: #ffbe33;
             border: none;
-            border-radius: 5px;
-            color: white;
+            border-radius: 45px;
+            color: #000000;
             font-size: 16px;
-            font-weight: bold;
             cursor: pointer;
+            text-transform: uppercase;
+            margin-top: 15px;
         }
+
+
         .order-details table {
             width: 100%;
             border-collapse: collapse;

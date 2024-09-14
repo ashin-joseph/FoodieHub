@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="{% static 'fnfd/images/favicon.png' %}" type="">
     <title>Foodiee Registration</title>
     <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="{% static 'fnfd/css/bootstrap.css' %}" />
@@ -20,7 +21,7 @@
   <link href="{% static 'fnfd/css/responsive.css' %}" rel="stylesheet" />
 </head>
 <body class="sub_page">
-<div class="hero_area">
+  <div class="hero_area">
     <div class="bg-box">
       <img src="{% static 'fnfd/images/hero-bg.jpg' %}" alt="">
     </div>
@@ -28,6 +29,9 @@
     <header class="header_section">
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="{% url 'Homepage' %}">
+            <span style="font-family: 'Dancing Script', cursive !important;">Foodiee</span>
+          </a>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class=""> </span>
@@ -35,11 +39,11 @@
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav  mx-auto ">
-              <li class="nav-item "><a class="nav-link" href="{% url 'Homepage' %}">Home <span class="sr-only">(current)</span></a></li>
-              <li class="nav-item "><a class="nav-link" href="{% url 'Menupage' %}">Menu</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'Homepage' %}">Home <span class="sr-only">(current)</span></a></li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'Menupage' %}">Menu</a></li>
               <li class="nav-item"><a class="nav-link" href="{% url 'Aboutpage' %}">About</a></li>
               <li class="nav-item"><a class="nav-link" href="{% url 'Book_tablepage' %}">Book</a></li>
-              <li class="nav-item"><a class="nav-link" href="{% url 'Contactpage' %}">Contact</a></li>
+              <li class="nav-item "><a class="nav-link" href="{% url 'Contactpage' %}">Contact</a></li>
             </ul>
             <div class="user_option">
               {% if request.session.su_username %}
@@ -69,8 +73,7 @@
                     <g>
                       <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
                    c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                    </g>
-                  </g>
+                    </g></g>
                   <g></g>
                   <g></g>
                   <g></g>
@@ -92,6 +95,7 @@
                 <a class="nav-link" href="{% url 'Reviewpage' %}"><i class="fa fa-star" style="color: gold;"></i></a>
 
               </form>
+              <a href="{% url 'Menupage' %}" class="order_online">Order</a>
             </div>
           </div>
         </nav>
@@ -99,7 +103,7 @@
     </header>
     <!-- end header section -->
   </div>
-<div>
+    <div>
     <div class="cotn_principal">
 <div class="cont_centrar">
 
@@ -128,13 +132,13 @@
 
     <div class="cont_back_info" style="height:500px;">
        <div class="cont_img_back_grey">
-       <img src="{% static 'fnfd/images/hero-bg5.jpg' %}" alt="" >
+       <img src="{% static 'fnfd/images/bg2.jpg' %}" alt="" >
        </div>
 
     </div>
 <div class="cont_forms" style="height:500px;">
     <div class="cont_img_back_">
-       <img src="{% static 'fnfd/images/hero-bg4.jpg' %}" alt="" >
+       <img src="{% static 'fnfd/images/bg2.jpg' %}" alt="" >
        </div>
     <form method="post" action="{% url 'LogInpage' %}"  >
  {% csrf_token %}
@@ -166,22 +170,27 @@
     </div>
 
   </div>
+
  </div>
+
 </div>
+
 </div>
+
 <style>
     /* ------------------------------------ Click on login and Sign Up to  changue and view the effect
 ---------------------------------------
 */
 
 * {
-  margin: 0px auto;
+
   padding: 0px;
   text-align: center;
   font-family: "Open Sans", sans-serif;
 }
 
 .cotn_principal {
+ margin-left: 70vh;
   position: absolute;
   width: 100%;
   display: flex;
@@ -202,9 +211,9 @@
   ); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(
     135deg,
-    #f1f2f3 0%,
-    #b3b4b5 100%,
-    #b3b4b5 100%
+    #fcfcfc 0%,
+    #fcfcfc 100%,
+    #fcfcfc 100%
   ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cfd8dc', endColorstr='#b0bec5',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
@@ -352,11 +361,11 @@
 }
 
 .btn_login {
-  background-color: #222831;
+  background-color:#ffbe33;
   border: none;
   padding: 10px;
   width: 200px;
-  border-radius: 3px;
+  border-radius: 45px;
   box-shadow: 1px 5px 20px -5px rgba(0, 0, 0, 0.4);
   color: #fff;
   margin-top: 10px;
@@ -393,11 +402,11 @@ background text
 }
 
 .btn_sign_up {
-  background-color: #222831;
+  background-color: #ffbe33;
   border: none;
   padding: 10px;
   width: 200px;
-  border-radius: 3px;
+  border-radius: 45px;
   box-shadow: 1px 5px 20px -5px rgba(0, 0, 0, 0.4);
   color: #fff;
   margin-top: 10px;
@@ -507,7 +516,7 @@ background text
   margin-top: 20px;
   width: 260px;
   border: none;
-  color: #f1f2f3;
+  color: black;
 }
 
 .cont_form_sign_up > h2 {
@@ -523,7 +532,7 @@ background text
   width: 260px;
   border: none;
   text-align: left;
-  color: #f1f2f3;
+  color: black;
 }
 
 .cont_form_login > h2 {

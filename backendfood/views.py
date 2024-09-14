@@ -20,7 +20,7 @@ def admin_login_fd(request):
                 login(request,x)
                 request.session['username']=un
                 request.session['password']=pwd
-                messages.success(request,"Welcome..")
+                messages.success(request,"Welcome to Foodiee Admin panel")
                 return redirect(index_pg)
             else:
                 messages.warning(request,"Invalid user")
@@ -61,7 +61,7 @@ def update_c(request,cUid):
         except MultiValueDictKeyError:
             c_c=fdCategoryDb.objects.get(id=cUid).c_picture
         fdCategoryDb.objects.filter(id=cUid).update(c_name=a,c_description=b,c_picture=c_c)
-        messages.warning(request,"Upadted category")
+        messages.warning(request,"Updated category")
         return redirect(display_Pg_c)
 def delete_c(request,cDid):
     fdCategoryDb.objects.filter(id=cDid).delete()
@@ -81,7 +81,7 @@ def save_add_p(request):
         f=request.FILES['b6']
         obj=fbProductDb(p_code=a,p_category=b,p_name=c,p_price=d,p_description=e,p_picture=f)
         obj.save()
-        messages.success(request,"added product")
+        messages.success(request,"Added product")
         return redirect(add_pg_p)
 def display_pg_p(request):
     pdata=fbProductDb.objects.all()
@@ -103,11 +103,11 @@ def update_p(request,pUid):
         except MultiValueDictKeyError:
             f_f=fbProductDb.objects.get(id=pUid).p_picture
         fbProductDb.objects.filter(id=pUid).update(p_code=a,p_category=b,p_name=c,p_price=d,p_description=e,p_picture=f_f)
-        messages.info(request,"updated product")
+        messages.info(request,"Updated product")
         return redirect(display_pg_p)
 def delete_p(request,pDid):
     fbProductDb.objects.filter(id=pDid).delete()
-    messages.error(request,"deleted product")
+    messages.error(request,"Deleted product")
     return redirect(display_pg_p)
 
 def contact_fnfd_display(request):
@@ -115,19 +115,19 @@ def contact_fnfd_display(request):
     return render(request,"fnfd_contac.html",{'condata':condata})
 def delete_contact(request,conDid):
     contactDb.objects.filter(id=conDid).delete()
-    messages.error(request,"Deleted Contact")
+    messages.error(request,"Deleted  enquiry message")
     return redirect(contact_fnfd_display)
 def book_table_display(request):
     btdata= booktableDb.objects.all()
     return render(request, "display_bt.html",{'btdata':btdata})
 def delete_booktable(request,Did):
     booktableDb.objects.filter(id=Did).delete()
-    messages.error(request,"Deleted BookTable")
+    messages.error(request,"Deleted table booking")
     return redirect(book_table_display)
 def review_display(request):
     rdata=reviewDb.objects.all()
     return render(request, "display_review.html",{'rdata':rdata})
 def delete_review(request,Did):
     reviewDb.objects.filter(id=Did).delete()
-    messages.error(request,"Deleted Review")
+    messages.error(request,"Deleted customer review")
     return redirect(review_display)
