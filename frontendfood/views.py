@@ -75,7 +75,7 @@ def Login_su_fd(request):
             request.session['su_username']=su_un
             request.session['su_password']=su_pwd
             messages.success(request, f"{su_un} Welcome to Foodiee.")
-            return redirect(home_pg_fd)
+            return redirect(menu_pg_fd)
         else:
             messages.error(request, "Invalid user name or password")
             return redirect(registration_pg_fd)
@@ -180,4 +180,4 @@ def payment_pg(request):
         payment=client.order.create({'amount':amount, 'order_currency':order_currency,'payment_capture':'1'})
 
 
-    return render(request,"payment_foodiee.html",{'customer':customer,'pay_str':pay_str})
+    return render(request,"payment_foodiee.html",{'customer':customer,'pay_str':pay_str,"pay":pay})

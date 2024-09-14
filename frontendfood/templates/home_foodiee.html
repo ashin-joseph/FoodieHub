@@ -128,14 +128,14 @@
               <div class="row">
                 <div class="col-md-7 col-lg-6 ">
                   <div class="detail-box">
-                    <h1>Traditional Foods</h1>
-                    <p>Food that has been passed down through generations, and may have a
+                    <h1 >Traditional Foods</h1>
+                    <p style="font-weight:14ppt bold !important;">Food that has been passed down through generations, and may have a
                       historic precedent in a national dish, regional cuisine, or local cuisine.
                       Traditional foods are often associated with specific celebrations and
                       seasons, and are known for their sensory properties.</p>
-                    <div class="btn-box">
-                      <a href="{% url 'Menupage' %}" class="btn1" style="background-color:#222831 !important;">Order Now</a>
-                    </div>
+<!--                    <div class="btn-box">-->
+<!--                      <a href="{% url 'Menupage' %}" class="btn1" style="background-color:#222831 !important;">Order Now</a>-->
+<!--                    </div>-->
                   </div>
                 </div>
               </div>
@@ -151,9 +151,9 @@
                       with a strong priority placed on speed of service. It is a commercial term,
                       limited to food sold in a restaurant or store with frozen, preheated or precooked
                       ingredients and served in packaging for take-out/takeaway.</p>
-                    <div class="btn-box">
-                      <a href="{% url 'Menupage' %}" class="btn1" style="background-color:#222831 !important;">Order Now</a>
-                    </div>
+<!--                    <div class="btn-box">-->
+<!--                      <a href="{% url 'Menupage' %}" class="btn1" style="background-color:#222831 !important;">Order Now</a>-->
+<!--                    </div>-->
                   </div>
                 </div>
               </div>
@@ -206,9 +206,8 @@
           <div class="col-sm-6 col-lg-4 all pizza">
             <div class="box">
               <div>
-                <div class="img-box">
-                  <img src="{{i.c_picture.url }}" alt="" width="180px" height="180px">
-                </div>
+                <img class="img-box " src="{{i.c_picture.url }}" alt="" >
+
                 <div class="detail-box" style="text-align:center;">
                   <h5>{{i.c_name}}</h5>
 

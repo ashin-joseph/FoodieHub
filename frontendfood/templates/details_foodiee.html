@@ -122,19 +122,19 @@
     <div class="container1">
       {% for i in pdata %}
         <div class="product">
-            <img src="{{i.p_picture.url}}" alt="Product Image">
+            <img src="{{i.p_picture.url}}" alt="Product Image" >
             <h2 class="product-name">{{i.p_name}}</h2>
 <!--            <p class="description">{{i.p_description}}</p>-->
             <p class="price">Rs.{{i.p_price}}</p>
           <form method="post" action="{% url 'SaveCart' %}">
             {% csrf_token %}
 <!--            <label for="quantity">Quantity:</label>-->
-            <input type="number" placeholder="Quantity" id="quantity"  name="quantity" min="1" value="0" style="border: line; border-radius: 8px">
-            <input type="hidden" placeholder="Price" id="price" name="price"  value="{{ i.p_price }}">
-            <input type="text" placeholder="Total Price" id="totalprice"  name="totalprice" style="border:none;">
+            <input type="number" placeholder="Quantity" id="quantity"  name="quantity" min="1" value="0" style="border: line; border-radius: 8px"><br>
+            <input type="hidden" placeholder="Price" id="price" name="price"  value="{{ i.p_price }}" style="margin-top:10px;">
+            <input type="text" placeholder="Total Price" id="totalprice"  name="totalprice" style="border:none; text-align: center; margin-top:10px; font-size: 1.5em; font-weight: 600;">
             <input type="hidden" placeholder="username" name="username" value="{{request.session.su_username}}" readonly>
             <input type="hidden" placeholder="product name" name="productname" value="{{i.p_name}}" readonly><br>
-            <a href=""><button type="submit" style="background-color: #ffbe33">Place Order</button></a>
+            <a href=""><button type="submit" style="background-color: #ffbe33; margin-top:10px;">Place Order</button></a>
             </form>
         </div>
       {% endfor %}
@@ -206,20 +206,23 @@
 }
 
 .product {
-    border: 1px solid #ccc;
+    border:none;
     padding: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 100px;
+    margin-top: 100px;
 }
 
 .product img {
     width: 200px;
     height: 200px;
     margin-bottom: 10px;
+    border-radius: 12px;
 }
 
 .product-name {
     font-size: 24px;
     margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .description {
@@ -242,7 +245,7 @@ button {
     background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 45px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
